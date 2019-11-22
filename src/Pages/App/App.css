@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.nav {
+}
+
+.nav > ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+li {
+  border: 1px solid black;
+  padding: 1vmin;
+  margin: 5px;
+}
+
+li:hover {
+  background-color: #4a5161;
+}
+
+.title {
+  display: inline-block;
+}
