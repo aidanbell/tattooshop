@@ -4,6 +4,7 @@ import './App.css';
 import Landing from '../../components/Landing/Landing';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
+import NavBar from '../../components/NavBar/NavBar';
 
 class App extends Component {
   constructor() {
@@ -20,25 +21,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <div class="title">Tattoo Shop</div>
-          <div class="nav">
-            <ul>
-              <li>Log In</li>
-              <li>Artists</li>
-              <li>About</li>
-              <li>Contact</li>
-            </ul>
-        </div>
-        </header>
+        <NavBar />
         <Switch>
           <Route exact path='/' render={() =>
             <Landing />
           }/>
-          <Route exact path='/signup' render={() =>
+          <Route exact path='/signup' render={({ history }) =>
             <SignupPage />
           }/>
-          <Route exact path='/login' render={() =>
+          <Route exact path='/login' render={({ history }) =>
             <LoginPage />
           }/>
         </Switch>

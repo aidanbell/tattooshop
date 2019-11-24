@@ -1,9 +1,13 @@
 import React from 'react';
+import './Landing.css';
 
 const Landing = () => {
   return (
-    <div class="landing-main">
+    <div className="landing-main">
       <h1>Welcome to My Tattoo Studio</h1>
+      <hr className="hr-skinny"/>
+      <hr className="hr-thick"/>
+      <hr className="hr-skinny"/> 
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare
         enim efficitur, feugiat justo eget, consectetur nisi. Nam eu sodales nibh.

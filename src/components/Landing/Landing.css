@@ -1,0 +1,17 @@
+.landing-main {
+  color: #FCFCFC;
+  border-radius: 5vmin;
+  background-color: rgba(99, 99, 99, 0.7);
+  border: 10px solid rgba(99, 99, 99, 0.1);
+  padding: 20px 20px;
+  margin-top: 10vmin;
+  vertical-align: middle;
+}
+
+.hr-skinny {
+  border-top: 1px solid black;
+}
+
+.hr-thick {
+  border-top: 4px solid black;
+}
