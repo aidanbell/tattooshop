@@ -28,7 +28,9 @@ class App extends Component {
             <Landing />
           }/>
           <Route exact path='/signup' render={({ history }) =>
-            <SignupPage />
+            <SignupPage
+              history={history}
+            />
           }/>
           <Route exact path='/login' render={({ history }) =>
             <LoginPage />

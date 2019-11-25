@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
 
-
 class SignupForm extends Component {
   state = {
-    first_name: '',
-    last_name: '',
+    name: '',
     email: '',
     password: '',
     passwordConf: ''
@@ -18,7 +16,7 @@ class SignupForm extends Component {
       // Using ES2015 Computed Property Names
       [e.target.name]: e.target.value
     });
-  }
+  };
 
   handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,11 +28,11 @@ class SignupForm extends Component {
       // Invalid user data (probably duplicate email)
       this.props.updateMessage(err.message);
     }
-  }
+  };
 
   isFormInvalid() {
-    return !(this.state.first_name && this.state.last_name && this.state.email && this.state.password === this.state.passwordConf);
-  }
+    return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
+  };
 
   render() {
     return (
@@ -43,12 +41,7 @@ class SignupForm extends Component {
         <form className="form-horizontal" onSubmit={this.handleSubmit} >
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder="First Name" value={this.state.name} name="first_name" onChange={this.handleChange} />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder="Last Name" value={this.state.name} name="last_name" onChange={this.handleChange} />
+              <input type="text" className="form-control" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">
@@ -76,6 +69,6 @@ class SignupForm extends Component {
       </div>
     );
   }
-}
+};
 
 export default SignupForm;

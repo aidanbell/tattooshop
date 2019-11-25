@@ -8,7 +8,6 @@ async function signup(req, res) {
   const user = new User(req.body);
   try {
     await user.save();
-    console.log(user);
     // TODO: Send back a JWT instead of the user
     res.json(user);
   } catch (err) {
