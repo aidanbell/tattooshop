@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 class NavBar extends Component {
 
   render() {
+    let loggedIn = this.props.user ?
+      <div>
+        <Link to='/artists' className="nav-link">ARTISTS</Link>
+        <Link to='/appointment' className="nav-link">APPOINTMENTS</Link>
+        <Link to='/profile' className="nav-link">PROFILE</Link>
+        <Link to='/logout' className="nav-link" onClick={this.props.handleLogout}>LOG OUT</Link>
+      </div>
+      :
+      <div>
+        <Link to='/signup' className="nav-link">SIGN UP</Link>
+        <Link to='/login' className="nav-link">LOG IN</Link>
+      </div>;
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light">
-        <a className="navbar-brand" href="/">Navbar</a>
+        <a className="navbar-brand" href="/">Home</a>
+
+        {loggedIn}
+
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -35,7 +52,7 @@ class NavBar extends Component {
             </li>
           </ul>
         </div>
-</nav>
+      </nav>
 
     )
   }

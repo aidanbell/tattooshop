@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
+import userService from '../../utils/userService';
+
 import Landing from '../../components/Landing/Landing';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import About from '../About/About';
 import NavBar from '../../components/NavBar/NavBar';
+import ApptPage from '../ApptPage/ApptPage';
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {...this.getInitialState()};
+    this.state = {
+      ...this.getInitialState(),
+      user: userService.getUser()
+    };
   }
 
   getInitialState() {
@@ -19,10 +25,22 @@ class App extends Component {
     };
   }
 
+  handleLogout = () => {
+    userService.logout();
+    this.setState({user: null });
+  }
+
+  handleSignupOrLogin = () => {
+    this.setState({user: userService.getUser()});
+  }
+
   render() {
     return (
       <div className="App">
-        <NavBar />
+        <NavBar
+          user={this.state.user}
+          handleLogout={this.handleLogout}
+        />
         <Switch>
           <Route exact path='/' render={() =>
             <Landing />
@@ -30,13 +48,22 @@ class App extends Component {
           <Route exact path='/signup' render={({ history }) =>
             <SignupPage
               history={history}
+              handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
           <Route exact path='/login' render={({ history }) =>
-            <LoginPage />
+            <LoginPage
+              history={history}
+              handleSignupOrLogin={this.handleSignupOrLogin}
+            />
           }/>
           <Route exact path='/about' render={({ history }) =>
             <About />
+          }/>
+          <Route exact path='/book_appointment' render={() =>
+            <ApptPage
+              user={this.state.user}
+            />
           }/>
         </Switch>
       </div>
