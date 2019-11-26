@@ -2,21 +2,23 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import userService from '../../utils/userService';
+import apptService from '../../utils/apptService'
 
 import Landing from '../../components/Landing/Landing';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import About from '../About/About';
 import NavBar from '../../components/NavBar/NavBar';
-import ApptPage from '../ApptPage/ApptPage';
+import NewApptPage from '../NewApptPage/NewApptPage';
+import Appointment from '../Appointment/Appointment';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       ...this.getInitialState(),
-      user: userService.getUser()
-    };
+      user: userService.getUser(),
+    }
   }
 
   getInitialState() {
@@ -60,11 +62,19 @@ class App extends Component {
           <Route exact path='/about' render={({ history }) =>
             <About />
           }/>
-          <Route exact path='/book_appointment' render={() =>
-            <ApptPage
+          <Route exact path='/book_appointment' render={({ history }) =>
+            <NewApptPage
               user={this.state.user}
+              history={history}
+              appt={this.state.appt}
             />
           }/>
+        <Route exact path='/:id' render={props =>
+              <Appointment
+                {...props}
+
+                />
+            }/>
         </Switch>
       </div>
     );

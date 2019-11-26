@@ -4,7 +4,9 @@ import userService from '../../utils/userService';
 
 class SignupForm extends Component {
   state = {
-    name: '',
+    first_name: '',
+    last_name: '',
+    phone: '',
     email: '',
     password: '',
     passwordConf: ''
@@ -31,7 +33,7 @@ class SignupForm extends Component {
   };
 
   isFormInvalid() {
-    return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
+    return !(this.state.first_name && this.state.last_name && this.state.phone && this.state.email && this.state.password === this.state.passwordConf);
   };
 
   render() {
@@ -41,7 +43,17 @@ class SignupForm extends Component {
         <form className="form-horizontal" onSubmit={this.handleSubmit} >
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} />
+              <input type="text" className="form-control" placeholder="First Name" value={this.state.first_name} name="first_name" onChange={this.handleChange} />
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="col-sm-12">
+              <input type="text" className="form-control" placeholder="Last Name" value={this.state.last_name} name="last_name" onChange={this.handleChange} />
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="col-sm-12">
+              <input type="text" className="form-control" placeholder="Phone" value={this.state.phone} name="phone" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">

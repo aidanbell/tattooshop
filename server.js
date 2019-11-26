@@ -18,6 +18,7 @@ app.use(express.json());
 
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/appts', require('./routes/api/appts'));
 
 // The following "catch all" route (note the *)is necessary
 // for a SPA's client-side routing to properly work

@@ -17,16 +17,21 @@ const appointmentSchema = new Schema({
   status: {
     type: String,
     required: true,
+    default: "requested",
+  },
+  size: {
+    type: String,
   },
   artist: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
+    type: String,
   },
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
-  photos: [photoSchema],
+  photos: [{
+    type: String
+  }],
   description: {
     type: String,
     maxlength: 500,
