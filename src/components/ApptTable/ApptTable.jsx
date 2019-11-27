@@ -57,7 +57,7 @@ class ApptTable extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.appts.map((a, idx) => (
+            {this.state.appts.sort((a, b) => (a.createdAt > b.createdAt) ? 1 : -1).map((a, idx) => (
               <tr>
                 <td><Link to={`/${a._id}`}>{a.name}</Link></td>
                 <td>{a.date ? a.date : "None Yet"}</td>

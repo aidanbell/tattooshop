@@ -85,6 +85,7 @@ class App extends Component {
           <Route exact path='/:id' render={props =>
             <Appointment
               {...props}
+              user={this.state.user}
             />
           }/>
         </Switch>

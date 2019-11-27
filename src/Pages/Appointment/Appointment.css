@@ -1,0 +1,10 @@
+.appointment {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(99, 99, 99, 0.7);
+  margin: 4vmin;
+}
+
+.appointment > div {
+  flex: 1;
+}

@@ -54,9 +54,27 @@ function updateStatus(req, res) {
   })
 }
 
+function createMessage(req, res) {
+  const {
+    author,
+    content
+  } = req.body
+  const {
+    id
+  } = req.params
+  return Appt.findById(id, (err, appt) => {
+    if (err) return;
+    appt.messages.push(req.body)
+    appt.save((err) => {
+      return res.json(appt);
+    })
+  })
+}
+
 module.exports = {
   create,
   getAppt,
   getArtistAppts,
-  updateStatus
+  updateStatus,
+  createMessage
 }

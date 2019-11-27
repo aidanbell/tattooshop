@@ -11,6 +11,7 @@ router.use(require('../../config/auth'));
 router.post('/create', apptsCtrl.create);
 router.get('/getAppts/:id', apptsCtrl.getArtistAppts);
 router.patch('/:id/update', apptsCtrl.updateStatus);
+router.post('/:id/createMessage', apptsCtrl.createMessage);
 router.get('/:id', apptsCtrl.getAppt);
 
 /*---------- Helper Functions ----------*/

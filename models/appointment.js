@@ -9,6 +9,16 @@ const photoSchema = new Schema({
   }
 })
 
+const messageSchema = new Schema({
+  content: {
+    type: String,
+    maxlength: 250,
+  },
+  author: {
+    type: String,
+  }
+})
+
 const appointmentSchema = new Schema({
   date: {
     type: Date,
@@ -39,7 +49,8 @@ const appointmentSchema = new Schema({
   description: {
     type: String,
     maxlength: 500,
-  }
+  },
+  messages: [messageSchema]
 }, {
   timestamps: true
 })

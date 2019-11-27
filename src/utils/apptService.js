@@ -35,7 +35,25 @@ function updateStatus(toUpdate) {
     .then(data => data);
 }
 
+function createMessage(msg, id) {
+  console.log(msg, id);
+  return fetch(`${BASE_URL}${id}/createMessage`, {
+      method: 'POST',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken()
+      }),
+      body: JSON.stringify(msg)
+    })
+    .then(res => {
+      if (res.status) return res.json();
+      throw new Error('uhhh')
+    })
+    .then(data => data)
+}
+
 export default {
   create,
   updateStatus,
+  createMessage
 };
