@@ -25,7 +25,22 @@ function getAppt(req, res) {
   })
 }
 
+function getArtistAppts(req, res) {
+  const {
+    id
+  } = req.params
+  debugger;
+  return Appt.find({
+    artist: id
+  }, (err, appts) => {
+    if (err) return;
+    return res.json(appts);
+  })
+}
+
+
 module.exports = {
   create,
   getAppt,
+  getArtistAppts
 }

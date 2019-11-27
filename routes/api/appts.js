@@ -9,7 +9,8 @@ const apptsCtrl = require('../../controllers/appts');
 /*---------- Protected Routes ----------*/
 router.use(require('../../config/auth'));
 router.post('/create', apptsCtrl.create);
-router.get('/:id', apptsCtrl.getAppt)
+router.get('/getAppts/:id', apptsCtrl.getArtistAppts);
+router.get('/:id', apptsCtrl.getAppt);
 
 /*---------- Helper Functions ----------*/
 // function checkAuth(req, res, next) {

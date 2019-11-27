@@ -11,6 +11,8 @@ import About from '../About/About';
 import NavBar from '../../components/NavBar/NavBar';
 import NewApptPage from '../NewApptPage/NewApptPage';
 import Appointment from '../Appointment/Appointment';
+import Artists from '../Artists/Artists';
+import Profile from '../Profile/Profile';
 
 class App extends Component {
   constructor() {
@@ -66,15 +68,25 @@ class App extends Component {
             <NewApptPage
               user={this.state.user}
               history={history}
-              appt={this.state.appt}
             />
           }/>
-        <Route exact path='/:id' render={props =>
-              <Appointment
-                {...props}
-
-                />
-            }/>
+          <Route exact path='/artists' render={props =>
+            <Artists
+              {...props}
+              user={this.state.user}
+            />
+          }/>
+          <Route exact path='/profile' render={props =>
+            <Profile
+              {...props}
+              user={this.state.user}
+            />
+          }/>
+          <Route exact path='/:id' render={props =>
+            <Appointment
+              {...props}
+            />
+          }/>
         </Switch>
       </div>
     );

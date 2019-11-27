@@ -14,7 +14,10 @@ const userSchema = new mongoose.Schema({
     unique: true
   },
   password: String,
-  artist: Boolean,
+  artist: {
+    type: Boolean,
+    default: false
+  }
 }, {
   timestamps: true
 });

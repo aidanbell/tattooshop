@@ -3,13 +3,26 @@ import { Link } from 'react-router-dom';
 import apptService from '../../utils/apptService';
 
 class ApptForm extends Component {
-  state = {
-    artist: '',
-    user: '',
-    description: '',
-    photos: '',
-    size: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      artists: [],
+      artist: '',
+      user: '',
+      description: '',
+      photos: '',
+      size: '',
+    };
+  }
+
+  componentDidMount() {
+    fetch('/api/users/get-artists')
+      .then((res) => res.json())
+      .then((artists) => this.setState({
+        artists: artists,
+    }))
+  }
+
 
   handleChange = (e) => {
     this.props.updateMessage('');
@@ -23,7 +36,6 @@ class ApptForm extends Component {
     e.preventDefault();
     try {
       await apptService.create(this.state).then(({appt}) => {
-        // this.setState({appt: apptService.getAppt(appt._id)});
         this.props.history.push(`/${appt._id}`)
       })
     } catch(err) {
@@ -42,7 +54,16 @@ class ApptForm extends Component {
         <form className="form-horizontal" onSubmit={this.handleSubmit} >
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder="Artist" value={this.state.artist} name="artist" onChange={this.handleChange} />
+              <input type="name" className="form-control" placeholder="Let's give this project a name!" value={this.state.name} name="name" onChange={this.handleChange} />
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="col-sm-12">
+              <select type="artist" className="form-control" placeholder="Select an Artist" value={this.state.artist} name="artist" onChange={this.handleChange}>
+                {this.state.artists.map(a => (
+                  <option value={a.first_name} key={a.first_name}>{a.first_name} {a.last_name}</option>
+                ))}
+              </select>
             </div>
           </div>
           <div className="form-group">

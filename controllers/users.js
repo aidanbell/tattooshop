@@ -5,7 +5,17 @@ const SECRET = process.env.SECRET;
 module.exports = {
   signup,
   login,
+  getArtists,
 };
+
+function getArtists(req, res) {
+  return User.find({
+    artist: true
+  }, (err, artists) => {
+    if (err) return;
+    return res.json(artists);
+  })
+}
 
 async function signup(req, res) {
   const user = new User(req.body);

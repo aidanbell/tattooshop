@@ -32,6 +32,10 @@ const appointmentSchema = new Schema({
   photos: [{
     type: String
   }],
+  name: {
+    type: String,
+    maxlength: 100,
+  },
   description: {
     type: String,
     maxlength: 500,

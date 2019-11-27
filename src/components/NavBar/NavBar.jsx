@@ -7,7 +7,7 @@ class NavBar extends Component {
   render() {
     let loggedIn = this.props.user ?
       <div>
-        <Link to='/5ddd5bef234fae454a87c064' className="nav-link">ARTISTS</Link>
+        <Link to='/artists' className="nav-link">ARTISTS</Link>
         <Link to='/appointment' className="nav-link">APPOINTMENTS</Link>
         <Link to='/profile' className="nav-link">PROFILE</Link>
         <Link to='/logout' className="nav-link" onClick={this.props.handleLogout}>LOG OUT</Link>
