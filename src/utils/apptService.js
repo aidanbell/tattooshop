@@ -19,6 +19,23 @@ function create(appt) {
     .then(data => data);
 }
 
+function updateStatus(toUpdate) {
+  return fetch(`${BASE_URL}${toUpdate.id}/update`, {
+      method: 'PATCH',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken()
+      }),
+      body: JSON.stringify(toUpdate)
+    })
+    .then(res => {
+      if (res.status) return res.json();
+      throw new Error('uhoh');
+    })
+    .then(data => data);
+}
+
 export default {
-  create
+  create,
+  updateStatus,
 };

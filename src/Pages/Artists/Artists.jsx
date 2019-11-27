@@ -39,8 +39,9 @@ class Artists extends Component {
               since returned to Montclair, Emma's hometown, to open their
               second business, Painted Soul Arts.
             </p>
+            <Link to="/book_appointment" className="btn">BOOK APPOINTMENT</Link>
           </div>
-          <img className="profile" src={emmaProfile} />
+          <img className="profile" src={emmaProfile}/>
         </div>
         <div className="artist">
           <hr/>

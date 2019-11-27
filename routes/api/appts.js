@@ -10,6 +10,7 @@ const apptsCtrl = require('../../controllers/appts');
 router.use(require('../../config/auth'));
 router.post('/create', apptsCtrl.create);
 router.get('/getAppts/:id', apptsCtrl.getArtistAppts);
+router.patch('/:id/update', apptsCtrl.updateStatus);
 router.get('/:id', apptsCtrl.getAppt);
 
 /*---------- Helper Functions ----------*/

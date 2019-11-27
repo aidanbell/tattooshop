@@ -29,7 +29,6 @@ function getArtistAppts(req, res) {
   const {
     id
   } = req.params
-  debugger;
   return Appt.find({
     artist: id
   }, (err, appts) => {
@@ -38,9 +37,26 @@ function getArtistAppts(req, res) {
   })
 }
 
+function updateStatus(req, res) {
+  const {
+    status,
+    id
+  } = req.body
+  return Appt.findOneAndUpdate({
+    _id: id
+  }, {
+    status: status
+  }, {
+    new: true
+  }, (err, appt) => {
+    if (err) return;
+    return res.json(appt);
+  })
+}
 
 module.exports = {
   create,
   getAppt,
-  getArtistAppts
+  getArtistAppts,
+  updateStatus
 }
