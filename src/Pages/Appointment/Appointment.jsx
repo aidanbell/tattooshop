@@ -4,6 +4,7 @@ import apptService from '../../utils/apptService';
 
 import './Appointment.css';
 
+const paypallogo = require('../../images/paypal-logo.png');
 
 class Appointment extends Component {
   constructor(props) {
@@ -82,13 +83,26 @@ class Appointment extends Component {
       messages = this.state.appt.messages.map(m => (
         <div className="msg">
           <p>{m.content}</p>
-          <p>{m.author}</p>
+          <span className="badge badge-light">From: {m.author}</span>
         </div>
       ))
     } else {
       messages =
       <div>
         <p>No Messages Yet</p>
+      </div>
+    }
+
+    let payment;
+    let paymentStyle = {
+      backgroundImage: `url(${paypallogo})`
+    }
+    if (this.state.appt.status === "accepted") {
+      payment =
+      <div className="paymentLink">
+        <h4>Your Appointment has been Accepted!</h4>
+        <p>Please submit your deposit with paypal</p>
+        <a className="paypal btn" href="https://www.youtube.com/watch?v=nqAvFx3NxUM&feature=youtu.be&t=63"style={paymentStyle}></a>
       </div>
     }
 
@@ -100,6 +114,7 @@ class Appointment extends Component {
             {statusBadge}
 
             <p>{this.state.appt.description}</p>
+            {payment}
           </div>
           <div className="photos">
             <h3>Photos:</h3>
@@ -107,7 +122,7 @@ class Appointment extends Component {
           <div className="messages">
             <h3>Messages:</h3>
             {messages}
-              <form onSubmit={this.handleSubmit}>
+              <form className="msgForm" onSubmit={this.handleSubmit}>
                 <div className="form-row">
                   <textarea className="form-control" name="message" value={this.state.msg.content} onChange={this.handleChange} />
                 </div>

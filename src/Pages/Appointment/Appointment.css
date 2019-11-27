@@ -1,10 +1,60 @@
 .appointment {
   display: flex;
   flex-direction: row;
-  background-color: rgba(99, 99, 99, 0.7);
+  background-color: rgba(51, 42, 42, 0.9);
   margin: 4vmin;
+  border-radius: 1vmin;
+  padding: 2vmin;
+  color: #FFFFFF;
 }
 
 .appointment > div {
   flex: 1;
+}
+
+.photos {
+  border-left: 1px solid #FFFFFF;
+  border-right: 1px solid #FFFFFF;
+}
+
+.details {
+  margin-right: 2vmin;
+}
+
+.messages {
+  padding: 2vmin;
+}
+
+.msg {
+  text-align: left;
+  border: 1px dashed #FFFFFF;
+  padding: 1vmin;
+  background-color: rgba(99, 99, 99, 0.8)
+}
+
+.msg > span {
+  margin-bottom: 0;
+}
+
+.msgForm {
+  margin-top: 2vmin;
+}
+
+.paymentLink {
+  border: 1px dashed #FFFFFF;
+  border-radius: 1vmin;
+  padding: 2vmin;
+  background-color: rgba(99, 99, 99, 0.8)
+}
+
+.paypal {
+  height: 50px;
+  width: 200px;
+  padding: 2vmin;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: gold;
+  border-radius: 5vmin;
+  border: 2vmin solid gold;
 }

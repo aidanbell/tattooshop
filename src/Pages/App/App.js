@@ -5,14 +5,16 @@ import userService from '../../utils/userService';
 import apptService from '../../utils/apptService'
 
 import Landing from '../../components/Landing/Landing';
+import NavBar from '../../components/NavBar/NavBar';
+
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import About from '../About/About';
-import NavBar from '../../components/NavBar/NavBar';
 import NewApptPage from '../NewApptPage/NewApptPage';
 import Appointment from '../Appointment/Appointment';
 import Artists from '../Artists/Artists';
 import Profile from '../Profile/Profile';
+import Aftercare from '../Aftercare/Aftercare';
 
 class App extends Component {
   constructor() {
@@ -78,6 +80,12 @@ class App extends Component {
           }/>
           <Route exact path='/profile' render={props =>
             <Profile
+              {...props}
+              user={this.state.user}
+            />
+          }/>
+        <Route exact path='/aftercare' render={props =>
+            <Aftercare
               {...props}
               user={this.state.user}
             />

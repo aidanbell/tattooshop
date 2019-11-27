@@ -46,7 +46,7 @@ class ApptTable extends Component {
 
   render() {
     return (
-      <div>
+      <div className="ApptTable">
         <table className="table table-dark">
           <thead>
             <tr>
@@ -62,7 +62,7 @@ class ApptTable extends Component {
                 <td><Link to={`/${a._id}`}>{a.name}</Link></td>
                 <td>{a.date ? a.date : "None Yet"}</td>
                 <td>{a.photos.length}</td>
-                <td>{a.status}</td>
+                <td>{a.status.toUpperCase()}</td>
                 <td>
                   <form onSubmit={this.handleSubmit}>
                     <div className="form-row">
