@@ -20,13 +20,13 @@
   flex-direction: row-reverse;
 }
 
-li {
+.nav > ul > li {
   border: 1px solid black;
   padding: 1vmin;
   margin: 5px;
 }
 
-li:hover {
+.nav > ul > li:hover {
   background-color: #4a5161;
 }
 

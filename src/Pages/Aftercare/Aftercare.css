@@ -1,0 +1,21 @@
+.aftercare {
+  padding: 2vmin;
+  margin: 2vmin;
+  border-radius: 1vmin;
+  background-color: rgba(51, 42, 42, 0.9);
+  color: #FFFFFF;
+  text-align: justify;
+}
+
+.warning {
+  margin: 4vmin;
+  background-color: #998f1d;
+  padding: 2vmin;
+  color: black;
+  border-radius: 1vmin;
+  border: 1px solid black;
+}
+
+hr {
+  border-top: 1px solid #FFFFFF;
+}
