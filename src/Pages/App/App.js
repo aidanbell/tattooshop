@@ -40,6 +40,27 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
 
+  handleStatus = (status) => {
+    switch(status) {
+      case "requested":
+        return(
+          <h4><span class="badge badge-info">REQUESTED</span></h4>
+        );
+      case "accepted":
+        return(
+          <h4><span class="badge badge-primary">ACCEPTED</span></h4>
+        );
+      case "deposit-received":
+        return(
+          <h4><span class="badge badge-secondary">DEPOSIT RECEIVED</span></h4>
+        );
+      case "booked":
+        return(
+          <h4><span class="badge badge-success">BOOKED</span></h4>
+        );
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -82,6 +103,7 @@ class App extends Component {
             <Profile
               {...props}
               user={this.state.user}
+              handleStatus={this.handleStatus}
             />
           }/>
         <Route exact path='/aftercare' render={props =>
@@ -94,6 +116,7 @@ class App extends Component {
             <Appointment
               {...props}
               user={this.state.user}
+              handleStatus={this.handleStatus}
             />
           }/>
         </Switch>

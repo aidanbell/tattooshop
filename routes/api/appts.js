@@ -9,7 +9,8 @@ const apptsCtrl = require('../../controllers/appts');
 /*---------- Protected Routes ----------*/
 router.use(require('../../config/auth'));
 router.post('/create', apptsCtrl.create);
-router.get('/getAppts/:id', apptsCtrl.getArtistAppts);
+router.get('/getArtistAppts/:id', apptsCtrl.getArtistAppts);
+router.get('/getCustAppts/:id', apptsCtrl.getCustAppts);
 router.patch('/:id/update', apptsCtrl.updateStatus);
 router.post('/:id/createMessage', apptsCtrl.createMessage);
 router.get('/:id', apptsCtrl.getAppt);

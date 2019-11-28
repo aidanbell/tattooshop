@@ -50,34 +50,8 @@ class Appointment extends Component {
 
 
   render() {
-    let statusBadge;
-    switch(this.state.appt.status) {
-      case "requested":
-        statusBadge =
-        <div>
-          <h4><span class="badge badge-info">REQUESTED</span></h4>
-        </div>
-        break;
-      case "accepted":
-        statusBadge =
-        <div>
-          <h4><span class="badge badge-primary">ACCEPTED</span></h4>
-        </div>
-        break;
-      case "deposit-received":
-        statusBadge =
-        <div>
-          <h4><span class="badge badge-seconday">DEPOSIT RECEIVED</span></h4>
-        </div>
-        break;
-      case "booked":
-        statusBadge =
-        <div>
-          <h4><span class="badge badge-success">BOOKED</span></h4>
-        </div>
-        break;
-    }
 
+    // Messaging Display Logic
     let messages;
     if (this.state.appt.messages) {
       messages = this.state.appt.messages.map(m => (
@@ -93,25 +67,35 @@ class Appointment extends Component {
       </div>
     }
 
+    // Payment Button Logic
     let payment;
     let paymentStyle = {
       backgroundImage: `url(${paypallogo})`
     }
-    if (this.state.appt.status === "accepted") {
+    if (this.state.appt.status === "accepted" && !this.props.user.artist) {
       payment =
       <div className="paymentLink">
         <h4>Your Appointment has been Accepted!</h4>
         <p>Please submit your deposit with paypal</p>
         <a className="paypal btn" href="https://www.youtube.com/watch?v=nqAvFx3NxUM&feature=youtu.be&t=63"style={paymentStyle}></a>
       </div>
+    } else if (this.props.user.artist) {
+      payment =
+      <div className="paymentLink">
+        <h4>Customer Information:</h4>
+        <p>Name: Aidan Bell</p>
+        <p>Email: a@bell.com</p>
+        <p>Phone: 908-242-4040</p>
+      </div>
     }
+
 
 
     return (
         <div className='appointment'>
           <div className="details">
             <h2>{this.state.appt.name}</h2>
-            {statusBadge}
+            {this.props.handleStatus(this.state.appt.status)}
 
             <p>{this.state.appt.description}</p>
             {payment}

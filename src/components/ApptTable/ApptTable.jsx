@@ -14,7 +14,7 @@ class ApptTable extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/appts/getAppts/${this.props.user.first_name}`)
+    fetch(`/api/appts/getArtistAppts/${this.props.user.first_name}`)
       .then((res) => res.json())
       .then((appts) => this.setState({
         appts: appts,
@@ -62,7 +62,7 @@ class ApptTable extends Component {
                 <td><Link to={`/${a._id}`}>{a.name}</Link></td>
                 <td>{a.date ? a.date : "None Yet"}</td>
                 <td>{a.photos.length}</td>
-                <td>{a.status.toUpperCase()}</td>
+                <td>{this.props.handleStatus(a.status)}</td>
                 <td>
                   <form onSubmit={this.handleSubmit}>
                     <div className="form-row">
@@ -76,7 +76,7 @@ class ApptTable extends Component {
                         </select>
                       </div>
                       <div className="col-auto">
-                        <button type="submit" className="btn btn-primary" value={this.state.toUpdate.id}>Change</button>
+                        <button type="submit" className="btn btn-success" value={this.state.toUpdate.id}><i className="material-icons">check_circle</i></button>
                       </div>
                     </div>
                   </form>

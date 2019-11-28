@@ -65,6 +65,7 @@ class Artists extends Component {
               lines and curves, and to energize the soul of the wearer through
               color and movement.
             </p>
+            <Link to="/book_appointment" className="btn">BOOK APPOINTMENT</Link>
           </div>
           <img className="profile" src={cinarProfile} />
         </div>

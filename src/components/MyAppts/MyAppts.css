@@ -1,0 +1,21 @@
+.appt-card {
+  background-color: rgba(53, 42, 42, 0.9);
+  margin: 2vmin;
+  padding: 2vmin;
+  display: flex;
+  color: #FFFFFF;
+}
+
+.appt-card:hover {
+  background-color: rgba(48, 37, 37, 0.9);
+}
+
+.left {
+  text-align: left;
+  margin-right: auto;
+}
+
+Link:hover {
+  text-decoration: none;
+  text-transform: none;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import ApptTable from '../../components/ApptTable/ApptTable';
+import MyAppts from '../../components/MyAppts/MyAppts';
 
 class Profile extends Component {
 
@@ -10,11 +11,13 @@ class Profile extends Component {
     let isArtist = this.props.user.artist ?
       <ApptTable
         user={this.props.user}
+        handleStatus={this.props.handleStatus}
       />
       :
-      <div>
-        <h1>HI CUSTOMER</h1>
-      </div>
+      <MyAppts
+        user={this.props.user}
+        handleStatus={this.props.handleStatus}
+      />
     return (
       <div>
         {isArtist}

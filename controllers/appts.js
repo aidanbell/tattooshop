@@ -37,6 +37,18 @@ function getArtistAppts(req, res) {
   })
 }
 
+function getCustAppts(req, res) {
+  const {
+    id
+  } = req.params
+  return Appt.find({
+    user: id
+  }, (err, appts) => {
+    if (err) return;
+    return res.json(appts);
+  })
+}
+
 function updateStatus(req, res) {
   const {
     status,
@@ -75,6 +87,7 @@ module.exports = {
   create,
   getAppt,
   getArtistAppts,
+  getCustAppts,
   updateStatus,
   createMessage
 }
