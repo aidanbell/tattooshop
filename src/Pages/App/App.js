@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import userService from '../../utils/userService';
-import apptService from '../../utils/apptService'
 
 import Landing from '../../components/Landing/Landing';
 import NavBar from '../../components/NavBar/NavBar';
@@ -58,6 +57,8 @@ class App extends Component {
         return(
           <h4><span class="badge badge-success">BOOKED</span></h4>
         );
+      default:
+        return
     }
   }
 

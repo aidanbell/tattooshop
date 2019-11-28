@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import apptService from '../../utils/apptService';
 
 import './Appointment.css';
@@ -77,7 +76,7 @@ class Appointment extends Component {
       <div className="paymentLink">
         <h4>Your Appointment has been Accepted!</h4>
         <p>Please submit your deposit with paypal</p>
-        <a className="paypal btn" href="https://www.youtube.com/watch?v=nqAvFx3NxUM&feature=youtu.be&t=63"style={paymentStyle}></a>
+        <a className="paypal btn" href="https://www.youtube.com/watch?v=nqAvFx3NxUM&feature=youtu.be&t=63"style={paymentStyle}> </a>
       </div>
     } else if (this.props.user.artist) {
       payment =

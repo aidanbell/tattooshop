@@ -22,3 +22,8 @@
 .profile {
   margin: 0vmin 4vmin;
 }
+
+.img-thumbnail {
+  height: 100px;
+  width: 100px;
+}

@@ -4,12 +4,14 @@
   background-color: rgba(51, 42, 42, 0.9);
   border: 10px solid rgba(99, 99, 99, 0.1);
   padding: 20px 20px;
-  margin-top: 10vmin;
   vertical-align: middle;
+  margin: 2vmin;
+  margin-top: 10vmin;
 }
 
 .hr-skinny {
   border-top: 1px solid black;
+  margin-top: 0;
 }
 
 .hr-thick {

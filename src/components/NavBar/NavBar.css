@@ -10,3 +10,9 @@
 Link {
 
 }
+
+.logo {
+  height: 50px;
+  width: 50px;
+  filter: invert(100%);
+}

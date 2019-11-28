@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 
+const logo = require('../../images/tattoo.png')
+
 class NavBar extends Component {
 
   render() {
@@ -36,7 +38,7 @@ class NavBar extends Component {
 
     return (
       <nav className="navbar navbar-expand-md navbar-dark">
-        <a className="navbar-brand" href="/">Home</a>
+        <a className="navbar-brand" href="/"><img className="logo" src={logo} alt=""/></a>
 
 
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

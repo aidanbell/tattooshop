@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import ApptTable from '../../components/ApptTable/ApptTable';
 import MyAppts from '../../components/MyAppts/MyAppts';

@@ -4,7 +4,6 @@ import './Aftercare.css';
 const Aftercare = () => {
   return (
     <div>
-    <h1>AFTERCARE</h1>
     <div class="aftercare">
       <div class="healing">
         <h3>For “Open Healing”:</h3>
