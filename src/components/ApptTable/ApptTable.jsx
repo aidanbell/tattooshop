@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import apptService from '../../utils/apptService';
+import ReactDatePicker from '../ReactDatePicker/ReactDatePicker';
 
 import './ApptTable.css';
 
@@ -44,23 +45,33 @@ class ApptTable extends Component {
     }
   };
 
+  handleDate = (e) => {
+    console.log(e.target)
+  }
+
+
   render() {
     return (
       <div className="ApptTable">
-        <table className="table table-dark">
+        <table className="table">
           <thead>
             <tr>
               <th>Name:</th>
               <th>Date:</th>
               <th>Photos:</th>
               <th>Status:</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {this.state.appts.sort((a, b) => (a.createdAt > b.createdAt) ? 1 : -1).map((a, idx) => (
               <tr>
                 <td><Link to={`/${a._id}`}>{a.name}</Link></td>
-                <td>{a.date ? a.date : "None Yet"}</td>
+                <td>{a.status === "deposit-received" ?
+                  <ReactDatePicker/>
+                  :
+                  "None Yet"
+                }</td>
                 <td>{a.photos.length}</td>
                 <td>{this.props.handleStatus(a.status)}</td>
                 <td>

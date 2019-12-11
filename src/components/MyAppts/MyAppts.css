@@ -1,5 +1,5 @@
 .appt-card {
-  background-color: rgba(53, 42, 42, 0.9);
+  background-color: rgba(42, 51, 43, 0.9);
   margin: 2vmin;
   padding: 2vmin;
   display: flex;
@@ -7,7 +7,7 @@
 }
 
 .appt-card:hover {
-  background-color: rgba(48, 37, 37, 0.9);
+  background-color: rgba(37, 46, 38, 0.9);
 }
 
 .left {

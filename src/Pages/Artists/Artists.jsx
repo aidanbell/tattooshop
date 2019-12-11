@@ -81,6 +81,7 @@ class Artists extends Component {
           </div>
           <img className="profile" alt="" src={cinarProfile} />
         </div>
+        <div className="ghost"></div>
       </div>
     )
   }

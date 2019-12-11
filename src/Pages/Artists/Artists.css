@@ -2,7 +2,7 @@
   color: #FCFCFC;
   margin: 2vmin;
   border-radius: 1vmin;
-  background-color: rgba(51, 42, 42, 0.8);
+  background-color: rgba(42, 51, 43, 0.9);
   border: 10px solid rgba(99, 99, 99, 0.1);
   padding: 20px 20px;
   margin-top: 10vmin;
@@ -19,6 +19,10 @@
   text-align: justify;
 }
 
+.artist-page {
+  margin-bottom: 5vmin;
+}
+
 .profile {
   margin: 0vmin 4vmin;
 }
@@ -26,4 +30,8 @@
 .img-thumbnail {
   height: 100px;
   width: 100px;
+}
+
+.ghost {
+  height: 2vmin;
 }
