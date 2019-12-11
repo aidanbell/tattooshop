@@ -43,19 +43,19 @@ class App extends Component {
     switch(status) {
       case "requested":
         return(
-          <h4><span class="badge badge-info">REQUESTED</span></h4>
+          <h4><span className="badge badge-info">REQUESTED</span></h4>
         );
       case "accepted":
         return(
-          <h4><span class="badge badge-primary">ACCEPTED</span></h4>
+          <h4><span className="badge badge-primary">ACCEPTED</span></h4>
         );
       case "deposit-received":
         return(
-          <h4><span class="badge badge-secondary">DEPOSIT RECEIVED</span></h4>
+          <h4><span className="badge badge-secondary">DEPOSIT RECEIVED</span></h4>
         );
       case "booked":
         return(
-          <h4><span class="badge badge-success">BOOKED</span></h4>
+          <h4><span className="badge badge-success">BOOKED</span></h4>
         );
       default:
         return

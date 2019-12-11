@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import apptService from '../../utils/apptService';
 
+import './ApptForm.css';
+
 class ApptForm extends Component {
   constructor(props) {
     super(props);
@@ -45,12 +47,7 @@ class ApptForm extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h4>{this.props.user.first_name} {this.props.user.last_name}</h4>
-          <h5>{this.props.user.phone}</h5>
-          <h5>{this.props.user._id}</h5>
-        </div>
+      <div className="appt-form">
         <form className="form-horizontal" onSubmit={this.handleSubmit} >
           <div className="form-group">
             <div className="col-sm-12">

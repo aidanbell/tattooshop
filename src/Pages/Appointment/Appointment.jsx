@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import apptService from '../../utils/apptService';
+import s3Service from '../../utils/s3Service'
 
 import './Appointment.css';
 
@@ -12,6 +13,7 @@ class Appointment extends Component {
       appt: {},
       toUpdate: {},
       msg: {},
+      selectedPhoto: null
     };
   }
 
@@ -31,13 +33,29 @@ class Appointment extends Component {
             content: e.target.value
           }
       })
-    }
+      } else if (e.target.name === "photo") {
+        this.setState({
+          selectedPhoto: e.target.files[0],
+        })
+      }
   }
 
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await apptService.createMessage(this.state.msg, this.state.appt._id)
+      .then((appt) => {
+        this.setState({appt: appt})
+      })
+    } catch(err) {
+      alert(err);
+    }
+  };
+
+  handlePhoto = async (e) => {
+    e.preventDefault();
+    try {
+      await s3Service.uploadPhoto(this.state.selectedPhoto, this.state.appt._id)
       .then((appt) => {
         this.setState({appt: appt})
       })
@@ -101,6 +119,12 @@ class Appointment extends Component {
           </div>
           <div className="photos">
             <h3>Photos:</h3>
+            <form className="photoForm" onSubmit={this.handlePhoto}>
+              <div className="form-group">
+                <input type="file" name="photo" className="form-control-file" id="exampleFormControlFile1" onChange={this.handleChange}/>
+                <button type="submit" className="btn btn-success">Upload</button>
+              </div>
+            </form>
           </div>
           <div className="messages">
             <h3>Messages:</h3>
@@ -110,7 +134,7 @@ class Appointment extends Component {
                   <textarea className="form-control" name="message" value={this.state.msg.content} onChange={this.handleChange} />
                 </div>
                 <div className="col-auto right-align">
-                  <button type="submit" className="btn btn-primary">Send</button>
+                  <button type="submit" className="btn btn-success">Send</button>
                 </div>
               </form>
           </div>

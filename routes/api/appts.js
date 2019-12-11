@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const apptsCtrl = require('../../controllers/appts');
+const s3Ctrl = require('../../controllers/s3');
 
 /*---------- Public Routes ----------*/
 
@@ -12,6 +13,7 @@ router.post('/create', apptsCtrl.create);
 router.get('/getArtistAppts/:id', apptsCtrl.getArtistAppts);
 router.get('/getCustAppts/:id', apptsCtrl.getCustAppts);
 router.patch('/:id/update', apptsCtrl.updateStatus);
+router.post('/:id/uploadPhoto', s3Ctrl.uploadPhoto);
 router.post('/:id/createMessage', apptsCtrl.createMessage);
 router.get('/:id', apptsCtrl.getAppt);
 
