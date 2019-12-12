@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import apptService from '../../utils/apptService';
 
@@ -23,7 +23,15 @@ class ReactDatePicker extends Component {
     }
 
   handleSubmit = async date => {
-    console.log(date);
+    try {
+      await apptService.updateDate(date, this.props.id)
+      .then((updatedAppt) => {
+        const arr = this.state.appts.filter(appt => appt._id !== updatedAppt._id);
+        this.setState({appts: [...arr, updatedAppt]})
+      })
+    } catch(err) {
+      alert(err);
+    }
   };
 
   render() {

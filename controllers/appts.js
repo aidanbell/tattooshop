@@ -83,11 +83,16 @@ function createMessage(req, res) {
   })
 }
 
+function updateDate(req, res) {
+  console.log(req.body);
+}
+
 module.exports = {
   create,
   getAppt,
   getArtistAppts,
   getCustAppts,
   updateStatus,
-  createMessage
+  createMessage,
+  updateDate
 }

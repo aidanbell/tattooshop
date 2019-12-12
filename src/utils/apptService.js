@@ -20,7 +20,7 @@ function create(appt) {
 }
 
 function updateStatus(toUpdate) {
-  return fetch(`${BASE_URL}${toUpdate.id}/update`, {
+  return fetch(`${BASE_URL}${toUpdate.id}/updateStatus`, {
       method: 'PATCH',
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -36,7 +36,6 @@ function updateStatus(toUpdate) {
 }
 
 function createMessage(msg, id) {
-  console.log(msg, id);
   return fetch(`${BASE_URL}${id}/createMessage`, {
       method: 'POST',
       headers: new Headers({
@@ -52,8 +51,25 @@ function createMessage(msg, id) {
     .then(data => data)
 }
 
+function updateDate(date, id) {
+  return fetch(`${BASE_URL}${id}/updateDate`, {
+      method: 'PATCH',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken()
+      }),
+      body: JSON.stringify(new Date(date))
+    })
+    .then(res => {
+      if (res.status) return res.text();
+      throw new Error('nope')
+    })
+    .then(data => data)
+}
+
 export default {
   create,
   updateStatus,
-  createMessage
+  createMessage,
+  updateDate
 };

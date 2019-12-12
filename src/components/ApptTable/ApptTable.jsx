@@ -65,10 +65,12 @@ class ApptTable extends Component {
           </thead>
           <tbody>
             {this.state.appts.sort((a, b) => (a.createdAt > b.createdAt) ? 1 : -1).map((a, idx) => (
-              <tr>
+              <tr key={a._id}>
                 <td><Link to={`/${a._id}`}>{a.name}</Link></td>
                 <td>{a.status === "deposit-received" ?
-                  <ReactDatePicker/>
+                  <ReactDatePicker
+                    id={a._id}
+                  />
                   :
                   "None Yet"
                 }</td>
