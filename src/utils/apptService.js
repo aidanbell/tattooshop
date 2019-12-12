@@ -61,7 +61,7 @@ function updateDate(date, id) {
       body: JSON.stringify(new Date(date))
     })
     .then(res => {
-      if (res.status) return res.text();
+      if (res.status) return res.();
       throw new Error('nope')
     })
     .then(data => data)
