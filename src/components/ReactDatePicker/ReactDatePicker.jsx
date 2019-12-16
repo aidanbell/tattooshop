@@ -9,7 +9,8 @@ class ReactDatePicker extends Component {
     constructor (props) {
       super(props)
       this.state = {
-        startDate: new Date()
+        startDate: new Date(),
+        toUpdate: {}
       };
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,30 +19,45 @@ class ReactDatePicker extends Component {
 
     handleChange(date) {
       this.setState({
-        startDate: date
+        startDate: date,
+        toUpdate: {
+          id: this.props.id,
+          date: date
+        }
       })
     }
 
   handleSubmit = async date => {
     try {
-      await apptService.updateDate(date, this.props.id)
+      await apptService.updateDate(this.state.toUpdate)
       .then((updatedAppt) => {
-        const arr = this.state.appts.filter(appt => appt._id !== updatedAppt._id);
-        this.setState({appts: [...arr, updatedAppt]})
+        this.setState({startDate: date})
       })
     } catch(err) {
       alert(err);
     }
   };
 
+  parseDate = date => {
+    return
+  }
+
   render() {
     return (
-        <DatePicker
-          showPopperArrow={false}
-          selected={this.state.startDate}
-          onChange={this.handleChange}
-          onSelect={this.handleSubmit}
-        />
+      <div>
+        {!this.props.date ?
+          <div>
+          <DatePicker
+            showPopperArrow={false}
+            selected={this.state.startDate}
+            onChange={this.handleChange}
+          />
+          <button type="submit" onClick={this.handleSubmit} className="btn btn-success"><i className="material-icons">check_circle</i></button>
+          </div>
+          :
+          <span>{this.props.date.slice(0, 10)}</span>
+    }
+  </div>
     );
   }
 }

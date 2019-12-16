@@ -51,17 +51,17 @@ function createMessage(msg, id) {
     .then(data => data)
 }
 
-function updateDate(date, id) {
-  return fetch(`${BASE_URL}${id}/updateDate`, {
+function updateDate(toUpdate) {
+  return fetch(`${BASE_URL}${toUpdate.id}/updateDate`, {
       method: 'PATCH',
       headers: new Headers({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + tokenService.getToken()
       }),
-      body: JSON.stringify(new Date(date))
+      body: JSON.stringify(toUpdate)
     })
     .then(res => {
-      if (res.status) return res.();
+      if (res.status) return res.json();
       throw new Error('nope')
     })
     .then(data => data)

@@ -70,6 +70,7 @@ class ApptTable extends Component {
                 <td>{a.status === "deposit-received" ?
                   <ReactDatePicker
                     id={a._id}
+                    date={a.date}
                   />
                   :
                   "None Yet"

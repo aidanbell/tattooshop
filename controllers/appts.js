@@ -3,6 +3,7 @@ const Appt = require('../models/appointment');
 async function create(req, res) {
   const appt = new Appt(req.body);
   appt.user = req.user._id;
+  appt.date = null;
   try {
     await appt.save();
     res.json({
@@ -84,7 +85,17 @@ function createMessage(req, res) {
 }
 
 function updateDate(req, res) {
-  console.log(req.body);
+  const {
+    id,
+    date
+  } = req.body
+  return Appt.findById(id, (err, appt) => {
+    if (err) return;
+    appt.date = date;
+    appt.save((err) => {
+      return res.json(appt);
+    })
+  })
 }
 
 module.exports = {
